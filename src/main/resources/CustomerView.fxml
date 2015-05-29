@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<GridPane fx:controller="pl.mefiu.bank.CustomerController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          styleClass="root">
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+    <Text text="Customer Panel" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Text text="${controller.text}" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TableView fx:id="accTableView" GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <columns>
+            <TableColumn text="Balance" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="balance"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="IBAN" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="iban"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Account Number" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="accountNumber"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Code" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="code"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    <TableView fx:id="transTableView" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <columns>
+            <TableColumn text="Description" prefWidth="400">
+                <cellValueFactory>
+                    <PropertyValueFactory property="description"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    <TableView fx:id="custEmpTableView" GridPane.columnIndex="2" GridPane.rowIndex="2">
+        <columns>
+            <TableColumn text="Name" prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Salary" prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="salary"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    <HBox spacing="10" alignment="bottom_center" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="3">
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="amountTextField" promptText="Amount" prefWidth="200"/>
+            <ComboBox fx:id="otherAccountComboBox" GridPane.columnIndex="1" GridPane.rowIndex="6" prefWidth="200"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <Button fx:id="withdrawBtn" text="Withdraw" onAction="#handleMakeWithdraw" prefWidth="200"/>
+            <Button fx:id="depositBtn" text="Deposit" onAction="#handleMakeDeposit" prefWidth="200"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <Button fx:id="transferBetweenBanksBtn" text="Transfer Between Banks" onAction="#handleMakeTransferBetweenBanks" prefWidth="250"/>
+            <Button fx:id="transferBetweenAccountsBtn" text="Transfer Between Accounts" onAction="#handleMakeTransferBetweenAccounts" prefWidth="250"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <DatePicker fx:id="reportStartDatePicker" promptText="Report from: mm/dd/yyyy" prefWidth="250"/>
+            <DatePicker fx:id="reportEndDatePicker" promptText="Report to: mm/dd/yyyy" prefWidth="250"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <Button fx:id="fullReportBtn" text="Full Report" onAction="#handleMakeFullReport" prefWidth="200"/>
+            <Button fx:id="periodReportBtn" text="Period Report" onAction="#handleMakePeriodReport" prefWidth="200"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <Button fx:id="withdrawReportBtn" text="Withdraw Report" onAction="#handleMakeWithdrawReport" prefWidth="200"/>
+            <Button fx:id="depositReportBtn" text="Deposit Report" onAction="#handleMakeDepositReport" prefWidth="200"/>
+        </VBox>
+    </HBox>
+    <HBox spacing="10" alignment="bottom_center" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="3">
+        <TextField fx:id="balanceTextField" promptText="Balance" prefWidth="200"/>
+        <DatePicker fx:id="accountDatePicker" promptText="Expires at: yyyy-MM-dd" prefWidth="200"/>
+        <Button fx:id="createAccountBtn" text="Create Account" onAction="#handleAddAccount" prefWidth="200"/>
+    </HBox>
+    <HBox spacing="10" alignment="bottom_center" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="3">
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="nameTextField" promptText="Name" prefWidth="200"/>
+            <TextField fx:id="salaryTextField" promptText="Salary" prefWidth="200"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="cityTextField" promptText="City" prefWidth="200"/>
+            <TextField fx:id="postalCodeTextField" promptText="Postal Code" prefWidth="200"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="streetTextField" promptText="Street" prefWidth="200"/>
+            <TextField fx:id="apartmentNumberTextField" promptText="Apartment Number" prefWidth="200"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="stateTextField" promptText="State" prefWidth="200"/>
+            <TextField fx:id="emailTextField" promptText="Email" prefWidth="200"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="phoneNumberTextField" promptText="Phone number" prefWidth="200"/>
+            <DatePicker fx:id="datePicker" promptText="Expires at: mm/dd/yyyy" prefWidth="200"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <Button fx:id="addCustomerEmployerBtn" text="Add" onAction="#handleAddCustomerEmployer"/>
+        </VBox>
+    </HBox>
+    <HBox spacing="10" alignment="bottom_center" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="3">
+        <Button fx:id="removeCustomerBtn" text="Remove Customer Employer" onAction="#handleRemoveCustomerEmployer"/>
+        <Button fx:id="removeAccountBtn" text="Remove Account" onAction="#handleRemoveAccount"/>
+        <Button fx:id="logoutBtn" text="Log out" onAction="#handleLogout"/>
+        <Button fx:id="exitBtn" text="Exit" onAction="#handleExit"/>
+    </HBox>
+    <stylesheets>
+        <URL value="@stylesheet.css"/>
+    </stylesheets>
+</GridPane>

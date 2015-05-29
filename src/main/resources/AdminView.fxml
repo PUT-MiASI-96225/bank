@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<GridPane fx:controller="pl.mefiu.bank.AdminController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          styleClass="root">
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+    <Text text="Admin Panel!" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Text text="Add/update/remove employees:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
+        <columns>
+            <TableColumn fx:id="empRole" text="Employee Role" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="role"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Name" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Access Code" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="accessCode"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Created At" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="createdAt"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Expires At" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="expiresAt"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+        <sortOrder>
+            <fx:reference source="empRole"/>
+        </sortOrder>
+    </TableView>
+    <HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+        <TextField fx:id="textField" promptText="Name" prefWidth="250"/>
+        <DatePicker fx:id="datePicker" promptText="Expires at: mm/dd/yyyy" prefWidth="250"/>
+        <fx:define>
+            <ToggleGroup fx:id="employeeRole"/>
+        </fx:define>
+        <Label text="Employee role:"/>
+        <RadioButton text="ORDINARY" onAction="#handleOrdinaryEmployee" toggleGroup="$employeeRole" selected="true"/>
+        <RadioButton text="ADMIN" onAction="#handleAdmin" toggleGroup="$employeeRole"/>
+        <Button text="Add" onAction="#handleAddEmployee"/>
+    </HBox>
+    <HBox spacing="10" alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2">
+        <Button text="Update" onAction="#handleUpdateEmployee"/>
+        <Button text="Remove" onAction="#handleRemoveEmployee"/>
+        <Button text="Log out" onAction="#handleLogout"/>
+        <Button text="Exit" onAction="#handleExit"/>
+    </HBox>
+    <stylesheets>
+        <URL value="@stylesheet.css"/>
+    </stylesheets>
+</GridPane>

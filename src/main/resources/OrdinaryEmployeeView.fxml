@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<GridPane fx:controller="pl.mefiu.bank.OrdinaryEmployeeController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          styleClass="root">
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+    <Text text="Ordinary Employee Panel!" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Text text="Add/update/remove customers:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
+        <columns>
+            <TableColumn fx:id="firstname" text="First Name" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="fName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Second Name" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="sName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Signature" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="sig"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="PIN" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="pin"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Password" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="pass"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="City" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="city"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="ZIP" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="zip"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Street" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="street"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Apartment Number" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="apartment"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="State" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="state"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Email" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="email"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Phone Number" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="phone"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Date Of Birth" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="date"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+        <sortOrder>
+            <fx:reference source="firstname"/>
+        </sortOrder>
+    </TableView>
+    <HBox spacing="10" alignment="bottom_center" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="firstNameTextField" promptText="First Name" prefWidth="150"/>
+            <TextField fx:id="secondNameTextField" promptText="Second Name" prefWidth="150"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="signatureTextField" promptText="Signature" prefWidth="150"/>
+            <TextField fx:id="pinTextField" promptText="PIN" prefWidth="150"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="cityTextField" promptText="City" prefWidth="150"/>
+            <TextField fx:id="postalCodeTextField" promptText="Postal Code" prefWidth="150"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="streetTextField" promptText="Street" prefWidth="150"/>
+            <TextField fx:id="apartmentNumberTextField" promptText="Apartment Number" prefWidth="150"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="stateTextField" promptText="State" prefWidth="150"/>
+            <TextField fx:id="emailTextField" promptText="Email" prefWidth="150"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <TextField fx:id="phoneNumberTextField" promptText="Phone number" prefWidth="200"/>
+            <DatePicker fx:id="datePicker" promptText="Date of birth: mm/dd/yyyy" prefWidth="200"/>
+        </VBox>
+        <VBox alignment="center" spacing="10">
+            <Button text="Add" onAction="#handleAddCustomer"/>
+        </VBox>
+    </HBox>
+    <HBox spacing="10" alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2">
+        <Button text="Remove" onAction="#handleRemoveCustomer"/>
+        <Button text="Log out" onAction="#handleLogout"/>
+        <Button text="Exit" onAction="#handleExit"/>
+    </HBox>
+    <stylesheets>
+        <URL value="@stylesheet.css"/>
+    </stylesheets>
+</GridPane>
